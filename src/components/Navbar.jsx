@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 const Navbar = () => {
   return (
     <nav className="bg-white shadow p-4 flex justify-between items-center">
@@ -13,6 +14,12 @@ const Navbar = () => {
         <Link to="/my-bots" className="text-gray-700 hover:text-blue-600">My Bots</Link>
         <Link to="/login" className="text-blue-600 hover:underline">Login</Link>
         <Link to="/signup" className="text-green-600 hover:underline">Sign Up</Link>
+        <Link to="/discover" className="text-gray-700 hover:text-blue-600">Discover</Link>
+        <Link to="/admin" className="text-gray-700 hover:text-blue-600">Admin</Link>
+        <Link to="/business" className="text-gray-700 hover:text-blue-600">Business</Link>
+
+
+
       </div>
     </nav>
   );
