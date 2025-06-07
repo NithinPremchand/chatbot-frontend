@@ -1,48 +1,42 @@
-// src/pages/ChatbotCreate.jsx
-import React, { useState } from "react";
+ 
+import React, { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
 
-const ChatbotCreate = () => {
+const ChatbotEdit = () => {
   const [step, setStep] = useState(1);
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  // Mock existing data (pretend it's loaded)
+  const [title, setTitle] = useState("Existing Bot Title");
+  const [description, setDescription] = useState("Existing Bot Description");
 
-  const [youtubeLink, setYoutubeLink] = useState("");
-  const [websiteLink, setWebsiteLink] = useState("");
+  const [youtubeLink, setYoutubeLink] = useState("https://youtube.com/existing");
+  const [websiteLink, setWebsiteLink] = useState("https://example.com");
+
   const [documents, setDocuments] = useState([]);
 
-  const [fetchedItems, setFetchedItems] = useState([]);
+  const [fetchedItems, setFetchedItems] = useState([
+    { id: 1, name: "Existing Video 1" },
+    { id: 2, name: "Existing Webpage 1" },
+  ]);
 
   const handleNext = () => setStep(step + 1);
   const handleBack = () => setStep(step - 1);
-
-  const handleFetchData = () => {
-    // MOCK fetch
-    const mockItems = [
-      { id: 1, name: "Video 1" },
-      { id: 2, name: "Video 2" },
-      { id: 3, name: "Webpage 1" },
-    ];
-    setFetchedItems(mockItems);
-    handleNext();
-  };
 
   const handleRemoveItem = (id) => {
     setFetchedItems(fetchedItems.filter(item => item.id !== id));
   };
 
-  const handleIndexing = () => {
-    console.log("Indexing requested:", { title, description, youtubeLink, websiteLink, documents, fetchedItems });
-    alert("Indexing requested! 🚀 (Mock)");
+  const handleSaveChanges = () => {
+    console.log("Saving chatbot changes:", { title, description, youtubeLink, websiteLink, documents, fetchedItems });
+    alert("Chatbot changes saved! 🚀 (Mock)");
   };
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Create Chatbot (Step {step}/4)</h1>
+      <h1 className="text-2xl font-bold mb-4">Edit Chatbot (Step {step}/4)</h1>
 
       <Separator className="mb-4" />
 
@@ -58,7 +52,7 @@ const ChatbotCreate = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <Button onClick={handleNext}>Next: Add Data Sources</Button>
+          <Button onClick={handleNext}>Next: Edit Data Sources</Button>
         </Card>
       )}
 
@@ -81,14 +75,14 @@ const ChatbotCreate = () => {
           />
           <div className="space-x-2">
             <Button onClick={handleBack}>Back</Button>
-            <Button onClick={handleFetchData}>Next: Fetch & Review Data</Button>
+            <Button onClick={handleNext}>Next: Review Data</Button>
           </div>
         </Card>
       )}
 
       {step === 3 && (
         <Card className="p-4 space-y-4">
-          <h2 className="text-lg font-semibold">Fetched Data</h2>
+          <h2 className="text-lg font-semibold">Current Data</h2>
           {fetchedItems.map(item => (
             <div key={item.id} className="flex justify-between items-center p-2 border rounded">
               <span>{item.name}</span>
@@ -97,15 +91,15 @@ const ChatbotCreate = () => {
           ))}
           <div className="space-x-2">
             <Button onClick={handleBack}>Back</Button>
-            <Button onClick={handleNext}>Next: Request Indexing</Button>
+            <Button onClick={handleNext}>Next: Save Changes</Button>
           </div>
         </Card>
       )}
 
       {step === 4 && (
         <Card className="p-4 space-y-4 text-center">
-          <p>Ready to index your chatbot with selected data!</p>
-          <Button onClick={handleIndexing}>Request Indexing</Button>
+          <p>Ready to save your changes!</p>
+          <Button onClick={handleSaveChanges}>Save Changes</Button>
           <Button variant="outline" onClick={handleBack}>Back</Button>
         </Card>
       )}
@@ -113,4 +107,4 @@ const ChatbotCreate = () => {
   );
 };
 
-export default ChatbotCreate;
+export default ChatbotEdit;

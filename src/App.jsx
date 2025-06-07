@@ -1,42 +1,44 @@
-import AdminDashboard from "./pages/AdminDashboard";
-
-
-import Discover from "./pages/Discover";
-import './index.css'; // ✅ must be imported here
-<h1 className="text-3xl font-bold text-purple-600">Tailwind is working!</h1>
-
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+
 import Home from "./pages/Home";
 import ChatbotCreate from "./pages/ChatbotCreate";
-import MyBots from "./pages/MyBots";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup"; // ✅ must exist
+import ChatbotEdit from "./pages/ChatbotEdit";
 import BusinessDashboard from "./pages/BusinessDashboard";
+import Discover from "./pages/Discover";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import MyBots from "./pages/MyBots";
+import Chat from "./pages/Chat";
+import ChatHistory from "./pages/ChatHistory";
+import ShareChat from "./pages/ShareChat";
+import ForgotPassword from "./pages/ForgotPassword";
+import Profile from "./pages/Profile";
+import Layout from "./layouts/Layout";
 
+import "./index.css";
 
 function App() {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/business" element={<BusinessDashboard />} />
-
-        
-        <Route path="/admin" element={<AdminDashboard />} />
-
-        <Route path="/discover" element={<Discover />} />
-
-        <Route path="/" element={<Home />} />
-        <Route path="/create" element={<ChatbotCreate />} />
-        <Route path="/my-bots" element={<MyBots />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} /> {/* ✅ must be inside <Routes> */}
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/create" element={<ChatbotCreate />} />
+          <Route path="/edit/:botId" element={<ChatbotEdit />} />
+          <Route path="/my-bots" element={<BusinessDashboard />} />
+          <Route path="/discover" element={<Discover />} />
+          <Route path="/history" element={<ChatHistory />} />
+          <Route path="/chat/:botId" element={<Chat />} />
+          <Route path="/share/:chatId" element={<ShareChat />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }
 
 export default App;
-

@@ -17,6 +17,13 @@ const Navbar = () => {
         <Link to="/discover" className="text-gray-700 hover:text-blue-600">Discover</Link>
         <Link to="/admin" className="text-gray-700 hover:text-blue-600">Admin</Link>
         <Link to="/business" className="text-gray-700 hover:text-blue-600">Business</Link>
+        <Link to="/discover" className="text-gray-700 hover:text-blue-600">Discover</Link>
+        <Link to="/history" className="text-gray-700 hover:text-blue-600">Chat History</Link>
+        <Link to="/forgot-password" className="text-gray-700 hover:text-blue-600">Forgot Password</Link>
+        <Link to="/profile" className="text-gray-700 hover:text-blue-600">Profile</Link>
+
+
+ 
 
 
 
